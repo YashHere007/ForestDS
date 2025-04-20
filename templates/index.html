@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Fire Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Forest Fire Prediction</h1>
+        <form id="prediction-form">
+            <div class="form-group">
+                <label for="Temperature">Temperature (°C, 22-42):</label>
+                <input type="number" step="any" id="Temperature" name="Temperature" required>
+            </div>
+            <div class="form-group">
+                <label for="RH">Relative Humidity (%, 21-90):</label>
+                <input type="number" step="any" id="RH" name="RH" required>
+            </div>
+            <div class="form-group">
+                <label for="Ws">Wind Speed (km/h, 6-29):</label>
+                <input type="number" step="any" id="Ws" name="Ws" required>
+            </div>
+            <div class="form-group">
+                <label for="Rain">Rain (mm, 0-16.8):</label>
+                <input type="number" step="any" id="Rain" name="Rain" required>
+            </div>
+            <div class="form-group">
+                <label for="FFMC">FFMC (28.6-96):</label>
+                <input type="number" step="any" id="FFMC" name="FFMC" required>
+            </div>
+            <div class="form-group">
+                <label for="DMC">DMC (0.7-65.9):</label>
+                <input type="number" step="any" id="DMC" name="DMC" required>
+            </div>
+            <div class="form-group">
+                <label for="DC">DC (6.9-220.4):</label>
+                <input type="number" step="any" id="DC" name="DC" required>
+            </div>
+            <div class="form-group">
+                <label for="ISI">ISI (0-19):</label>
+                <input type="number" step="any" id="ISI" name="ISI" required>
+            </div>
+            <div class="form-group">
+                <label for="BUI">BUI (1.1-68):</label>
+                <input type="number" step="any" id="BUI" name="BUI" required>
+            </div>
+            <div class="form-group">
+                <label for="FWI">FWI (0-31.1):</label>
+                <input type="number" step="any" id="FWI" name="FWI" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

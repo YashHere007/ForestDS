@@ -1,0 +1,1 @@
+venv/ pycache/ *.pyc *.pkl # Optional: Exclude model/scaler if large merged_forest_fire_dataset.csv confusion_matrix_test.png feature_importance.png .DS_Store
