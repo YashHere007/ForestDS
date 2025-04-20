@@ -31,6 +31,6 @@ document.getElementById('prediction-form').addEventListener('submit', async func
         }
     } catch (error) {
         resultDiv.classList.add('error');
-        resultDiv.textContent = `Error: ${error.message}`;
+        resultDiv.textContent = `Error: Failed to connect to the server. Please try again later.`;
     }
 });

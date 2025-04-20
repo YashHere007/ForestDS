@@ -2,15 +2,23 @@ from flask import Flask, request, jsonify, render_template
 import pandas as pd
 import joblib
 import numpy as np
+import os
 
 app = Flask(__name__)
 
 # Load the updated model and scaler
+model_path = 'forest_fire_model_adjusted.pkl'
+scaler_path = 'scaler_adjusted.pkl'
+
 try:
-    model = joblib.load('forest_fire_model_adjusted.pkl')
-    scaler = joblib.load('scaler_adjusted.pkl')
-except FileNotFoundError:
-    raise FileNotFoundError("Model or scaler file not found. Ensure 'forest_fire_model_adjusted.pkl' and 'scaler_adjusted.pkl' are in the project directory.")
+    if not os.path.exists(model_path) or not os.path.exists(scaler_path):
+        raise FileNotFoundError("Model or scaler file not found.")
+    model = joblib.load(model_path)
+    scaler = joblib.load(scaler_path)
+except FileNotFoundError as e:
+    raise FileNotFoundError(f"Ensure '{model_path}' and '{scaler_path}' are in the project directory. Error: {str(e)}")
+except Exception as e:
+    raise Exception(f"Failed to load model or scaler: {str(e)}")
 
 # Define top features used by the model
 top_features = ['FWI', 'FFMC', 'ISI', 'RH', 'Temperature', 'FFMC_ISI', 'RH_Rain', 'FWI_RH']
@@ -80,4 +88,5 @@ def predict():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=False, host='0.0.0.0', port=port)

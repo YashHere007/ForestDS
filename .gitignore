@@ -1,1 +1,8 @@
-venv/ pycache/ *.pyc *.pkl # Optional: Exclude model/scaler if large merged_forest_fire_dataset.csv confusion_matrix_test.png feature_importance.png .DS_Store
+venv/
+__pycache__/
+*.pyc
+# *.pkl  # Uncomment to exclude model/scaler if hosted externally
+Algerian_forest_fires_dataset.csv
+confusion_matrix_test.png
+feature_importance.png
+.DS_Store
